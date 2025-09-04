@@ -256,89 +256,16 @@ Merci!
                 </button>
             </div>
         </section>
-
-        <section id="social-media-generator" class="mt-16 bg-[#06D6A0] p-6 md:p-10 rounded-lg shadow-xl text-center">
-             <h2 class="text-3xl font-bold mb-6 text-white">📸 Générateur d'Idées pour les Réseaux Sociaux 📸</h2>
-             <p class="text-white mb-6 max-w-2xl mx-auto">
-                 Besoin d'inspiration ? Entrez un sujet pour générer des idées de posts, des légendes et des concepts visuels.
-             </p>
-             <div class="flex flex-col items-center">
-                 <textarea id="social-input" rows="3" class="w-full max-w-xl p-4 rounded-lg border-2 border-[#073B4C] focus:outline-none focus:ring-2 focus:ring-[#073B4C] resize-none mb-4" placeholder="Ex: Nouveau café aux notes de caramel et de vanille."></textarea>
-                 <button onclick="generateSocialIdeas()" class="bg-white hover:bg-gray-200 text-[#073B4C] font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed" id="generate-social-button">
-                     Générer des Idées ✨
-                 </button>
-                 <div id="social-loading" class="mt-4 text-gray-800 hidden">Génération en cours...</div>
-                 <div id="social-output" class="bg-white w-full max-w-xl p-6 mt-6 rounded-lg shadow-inner text-left whitespace-pre-wrap"></div>
-             </div>
-         </section>
     </main>
 
     <script>
-        // The social media generator function is still here, but it will not work on GitHub as previously explained.
-        // It remains here for local testing or if the file is moved to a proper server.
-
         function copyBrief() {
             const briefContent = document.getElementById('brief-content');
             briefContent.select();
             document.execCommand('copy');
             alert('Le modèle a été copié dans votre presse-papiers!');
         }
-
-        async function generateSocialIdeas() {
-            const socialInput = document.getElementById('social-input').value.trim();
-            const socialOutput = document.getElementById('social-output');
-            const socialLoading = document.getElementById('social-loading');
-            const generateSocialButton = document.getElementById('generate-social-button');
-
-            if (!socialInput) {
-                socialOutput.innerHTML = '<span class="text-[#FF6B6B]">Veuillez décrire votre sujet pour générer des idées.</span>';
-                return;
-            }
-
-            socialLoading.classList.remove('hidden');
-            generateSocialButton.disabled = true;
-            socialOutput.innerHTML = '';
-
-            const systemPrompt = `
-                Agissez comme un expert en marketing des médias sociaux. Générez une liste d'idées créatives pour les médias sociaux basées sur la demande de l'utilisateur. Chaque idée doit inclure un "Titre", une "Description du post" et un "Concept visuel". Le ton est créatif et engageant. Les concepts visuels doivent être clairs et visuels (images, vidéos, carrousel, etc.). Le format doit être une liste facile à lire.
-            `;
-
-            const userQuery = `Générer 3 idées de posts pour les médias sociaux pour le sujet suivant : "${socialInput}"`;
-
-            try {
-                const apiKey = "";
-                const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=" + apiKey;
-
-                const payload = {
-                    contents: [{ parts: [{ text: userQuery }] }],
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
-                    const generatedText = result.candidates[0].content.parts[0].text;
-                    socialOutput.innerText = generatedText;
-                } else {
-                    socialOutput.innerHTML = '<span class="text-[#FF6B6B]">Erreur : Impossible de générer des idées.</span>';
-                }
-
-            } catch (error) {
-                console.error("API Call failed:", error);
-                socialOutput.innerHTML = '<span class="text-[#FF6B6B]">Une erreur est survenue lors de la connexion à l\'API.</span>';
-            } finally {
-                socialLoading.classList.add('hidden');
-                generateSocialButton.disabled = false;
-            }
-        }
     </script>
 </body>
 </html>
+
