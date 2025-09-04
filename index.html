@@ -145,7 +145,7 @@
                         <div class="icon">🎨</div>
                         <div class="bg-[#118AB2] text-white p-4 rounded-lg shadow-md w-60">
                             <h4 class="font-bold">3. Brief: Stacy (Graphisme)</h4>
-                            <p class="text-sm mt-1"><strong>Délai:</strong> 1 semaine min.</p>
+                            <p class="text-sm mt-1"><strong>Délai:</strong> 2 jours ouvrables</p>
                         </div>
                     </div>
 
@@ -153,7 +153,7 @@
                         <div class="icon">💻</div>
                         <div class="bg-[#06D6A0] text-white p-4 rounded-lg shadow-md w-60">
                             <h4 class="font-bold">3. Brief: Jo-anny (Marketing)</h4>
-                            <p class="text-sm mt-1"><strong>Délai:</strong> 3 jours ouvrables</p>
+                            <p class="text-sm mt-1"><strong>Délai:</strong> 2 jours ouvrables</p>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                     </li>
                     <li class="flex items-start">
                         <span class="text-[#06D6A0] font-bold mr-3">✓</span>
-                        <div><strong>Respect des Délais:</strong> Minimum 1 semaine pour Stacy et 3 jours ouvrables pour Jo-anny.</div>
+                        <div><strong>Respect des Délais:</strong> Minimum 2 jours ouvrables pour chaque projet.</div>
                     </li>
                     <li class="flex items-start">
                         <span class="text-[#06D6A0] font-bold mr-3">✓</span>
@@ -211,55 +211,103 @@
             </div>
         </section>
 
-        <section id="gemini-feature" class="mt-16 bg-[#FFD166] p-6 md:p-10 rounded-lg shadow-xl text-center">
-            <h2 class="text-3xl font-bold mb-6 text-[#073B4C]"> ✨ Générateur de Brief IA ✨</h2>
+        <section id="brief-template" class="mt-16 bg-[#FFD166] p-6 md:p-10 rounded-lg shadow-xl text-center">
+            <h2 class="text-3xl font-bold mb-6 text-[#073B4C]">✉️ Modèle de Brief de Projet ✉️</h2>
             <p class="text-gray-800 mb-6 max-w-2xl mx-auto">
-                Dites adieu aux courriels incomplets. Décrivez votre projet en quelques mots et l'IA générera un brief structuré et détaillé pour Stacy ou Jo-anny.
+                Copiez ce modèle et collez-le dans le corps de votre courriel. Remplissez les informations pour vous assurer que rien n'est oublié.
             </p>
             <div class="flex flex-col items-center">
-                <textarea id="project-input" rows="4" class="w-full max-w-xl p-4 rounded-lg border-2 border-[#118AB2] focus:outline-none focus:ring-2 focus:ring-[#118AB2] resize-none mb-4" placeholder="Ex: Créer une image de profil pour Instagram pour notre nouvelle saveur de café."></textarea>
-                <button id="generate-button" class="bg-[#118AB2] hover:bg-[#073B4C] text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-                    Générer le Brief ✨
+                <textarea id="brief-content" rows="15" class="w-full max-w-xl p-4 rounded-lg border-2 border-[#118AB2] focus:outline-none focus:ring-2 focus:ring-[#118AB2] resize-none font-mono text-sm" readonly>
+Sujet : Nouvelle Demande de Projet : [Titre du Projet]
+
+Salut l'équipe,
+
+Voici les détails de notre nouveau projet.
+
+* * *
+
+**1. OBJECTIF DU PROJET**
+[Décrivez l'objectif. Ex: Promouvoir notre nouveau café ou créer un visuel pour un événement.]
+
+**2. TYPE DE PROJET (pour Stacy ou Jo-anny)**
+[Choisissez le destinataire. Ex: Stacy - visuel / Jo-anny - site web, réseaux sociaux.]
+
+**3. DATE DE LIVRAISON SOUHAITÉE**
+[Indiquez la date requise. N'oubliez pas le délai minimum de 2 jours ouvrables. Pour une urgence, contactez Guillaume.]
+
+**4. DÉTAILS TECHNIQUES**
+[Précisez les formats et les dimensions. Ex: PNG, JPEG, PDF. Dimensions: 1080x1080px (Instagram) ou 8.5x11 pouces (imprimé).]
+
+**5. MESSAGE & TEXTE CLÉ**
+[Listez tous les textes, phrases d'accroche ou informations à inclure. Ex: Nom du produit, prix, dates, etc.]
+
+**6. DIRECTION CRÉATIVE & IMAGES**
+[Décrivez le style souhaité (ex: moderne, minimaliste, coloré). Incluez si vous avez des images ou des idées d'images.]
+
+**7. PUBLIC CIBLE**
+[Décrivez à qui ce projet s'adresse. Ex: clients existants, jeunes adultes, etc.]
+
+* * *
+
+Merci!
+                </textarea>
+                <button onclick="copyBrief()" class="bg-[#118AB2] hover:bg-[#073B4C] text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 mt-4">
+                    Copier le Modèle
                 </button>
-                <div id="loading" class="mt-4 text-gray-700 hidden">Génération en cours...</div>
-                <div id="brief-output" class="bg-white w-full max-w-xl p-6 mt-6 rounded-lg shadow-inner text-left whitespace-pre-wrap"></div>
             </div>
         </section>
+
+        <section id="social-media-generator" class="mt-16 bg-[#06D6A0] p-6 md:p-10 rounded-lg shadow-xl text-center">
+             <h2 class="text-3xl font-bold mb-6 text-white">📸 Générateur d'Idées pour les Réseaux Sociaux 📸</h2>
+             <p class="text-white mb-6 max-w-2xl mx-auto">
+                 Besoin d'inspiration ? Entrez un sujet pour générer des idées de posts, des légendes et des concepts visuels.
+             </p>
+             <div class="flex flex-col items-center">
+                 <textarea id="social-input" rows="3" class="w-full max-w-xl p-4 rounded-lg border-2 border-[#073B4C] focus:outline-none focus:ring-2 focus:ring-[#073B4C] resize-none mb-4" placeholder="Ex: Nouveau café aux notes de caramel et de vanille."></textarea>
+                 <button onclick="generateSocialIdeas()" class="bg-white hover:bg-gray-200 text-[#073B4C] font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed" id="generate-social-button">
+                     Générer des Idées ✨
+                 </button>
+                 <div id="social-loading" class="mt-4 text-gray-800 hidden">Génération en cours...</div>
+                 <div id="social-output" class="bg-white w-full max-w-xl p-6 mt-6 rounded-lg shadow-inner text-left whitespace-pre-wrap"></div>
+             </div>
+         </section>
     </main>
 
     <script>
-        document.getElementById('generate-button').addEventListener('click', async () => {
-            const projectInput = document.getElementById('project-input').value.trim();
-            const briefOutput = document.getElementById('brief-output');
-            const loadingIndicator = document.getElementById('loading');
-            const generateButton = document.getElementById('generate-button');
+        // The social media generator function is still here, but it will not work on GitHub as previously explained.
+        // It remains here for local testing or if the file is moved to a proper server.
 
-            if (!projectInput) {
-                briefOutput.innerHTML = '<span class="text-[#FF6B6B]">Veuillez décrire le projet pour générer un brief.</span>';
+        function copyBrief() {
+            const briefContent = document.getElementById('brief-content');
+            briefContent.select();
+            document.execCommand('copy');
+            alert('Le modèle a été copié dans votre presse-papiers!');
+        }
+
+        async function generateSocialIdeas() {
+            const socialInput = document.getElementById('social-input').value.trim();
+            const socialOutput = document.getElementById('social-output');
+            const socialLoading = document.getElementById('social-loading');
+            const generateSocialButton = document.getElementById('generate-social-button');
+
+            if (!socialInput) {
+                socialOutput.innerHTML = '<span class="text-[#FF6B6B]">Veuillez décrire votre sujet pour générer des idées.</span>';
                 return;
             }
 
-            loadingIndicator.classList.remove('hidden');
-            generateButton.disabled = true;
-            briefOutput.innerHTML = '';
+            socialLoading.classList.remove('hidden');
+            generateSocialButton.disabled = true;
+            socialOutput.innerHTML = '';
 
             const systemPrompt = `
-                Act as a professional marketing project manager. Your goal is to generate a comprehensive project brief based on a high-level user request. The brief must be structured clearly and contain all the information a graphic designer or a marketing manager would need to start a project without extra back-and-forth.
-
-                The brief should include the following sections, formatted clearly with titles:
-                1.  **Type de Projet:** Is it for print, web, social media, a video, etc.?
-                2.  **Objectif:** What is the goal of this project? (e.g., promote a new product, announce an event, etc.).
-                3.  **Détails Techniques:** This includes dimensions, formats (e.g., PNG, JPEG), and specific requirements (e.g., square format for Instagram, A4 for print).
-                4.  **Contenu et Message:** What text, taglines, or key messages should be included?
-                5.  **Direction Créative:** Describe the desired style, mood, or specific images needed.
-                6.  **Public Cible:** Who is the audience for this?
+                Agissez comme un expert en marketing des médias sociaux. Générez une liste d'idées créatives pour les médias sociaux basées sur la demande de l'utilisateur. Chaque idée doit inclure un "Titre", une "Description du post" et un "Concept visuel". Le ton est créatif et engageant. Les concepts visuels doivent être clairs et visuels (images, vidéos, carrousel, etc.). Le format doit être une liste facile à lire.
             `;
 
-            const userQuery = `Générer un brief pour le projet suivant: "${projectInput}"`;
-            
+            const userQuery = `Générer 3 idées de posts pour les médias sociaux pour le sujet suivant : "${socialInput}"`;
+
             try {
-                const apiKey = ""; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const apiKey = "";
+                const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=" + apiKey;
 
                 const payload = {
                     contents: [{ parts: [{ text: userQuery }] }],
@@ -273,24 +321,24 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                
+
                 const result = await response.json();
-                
+
                 if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
                     const generatedText = result.candidates[0].content.parts[0].text;
-                    briefOutput.innerText = generatedText;
+                    socialOutput.innerText = generatedText;
                 } else {
-                    briefOutput.innerHTML = '<span class="text-[#FF6B6B]">Erreur: Impossible de générer le brief.</span>';
+                    socialOutput.innerHTML = '<span class="text-[#FF6B6B]">Erreur : Impossible de générer des idées.</span>';
                 }
 
             } catch (error) {
                 console.error("API Call failed:", error);
-                briefOutput.innerHTML = '<span class="text-[#FF6B6B]">Une erreur est survenue lors de la connexion à l\'API.</span>';
+                socialOutput.innerHTML = '<span class="text-[#FF6B6B]">Une erreur est survenue lors de la connexion à l\'API.</span>';
             } finally {
-                loadingIndicator.classList.add('hidden');
-                generateButton.disabled = false;
+                socialLoading.classList.add('hidden');
+                generateSocialButton.disabled = false;
             }
-        });
+        }
     </script>
 </body>
 </html>
